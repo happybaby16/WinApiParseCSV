@@ -1,9 +1,4 @@
 #include "Header.h"
-#define PATHDLL L"CSVParseDLL.dll"
-#define PATHLIST L"Users.csv"
-
-typedef U*(_cdecl* MyFunction)(LPWSTR, LPWSTR, LPDWORD);
-typedef void (_cdecl* WriteToCSV)(U*, LPDWORD );
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
@@ -20,7 +15,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     U* users_1 = UserList(PATH, name_1, &count_1);
 
     //Создание результатирующей структуры
-    U* users_res = calloc(count + count_1, sizeof(U));
+    U* users_res = calloc(count+count_1, sizeof(U));
     DWORD count_res = count + count_1;
 
     for(int i=0;i<count;i++)
@@ -35,7 +30,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
     if (!(MyDLL = LoadLibrary(PATHDLL))) return 1;
-    WriteToCSV write = (WriteToCSV)GetProcAddress(MyDLL, "WriteToCSV");
+    WritetoCSV write = (WritetoCSV)GetProcAddress(MyDLL, "WriteToCSV");
     write(users_res,&count_res);
 
 
