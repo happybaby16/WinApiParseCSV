@@ -20,7 +20,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     U* users_1 = UserList(PATH, name_1, &count_1);
 
     //Создание результатирующей структуры
-    U* users_res = calloc(count+count_1, sizeof(U));
+    U* users_res = calloc(count + count_1, sizeof(U));
     DWORD count_res = count + count_1;
 
     for(int i=0;i<count;i++)
